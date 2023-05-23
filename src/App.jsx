@@ -1,24 +1,18 @@
 import { useState } from "react";
 import Questionnaire from "./components/Questionnaire/Questionnaire";
 import Introduction from "./components/Introduction/Introduction";
-
-function App() {
-  const [isQuizLive, setIsQuizLive] = useState(false);
-
+export default function App({ quiz }) {
+  const [activeQuestion, setActiveQuestion] = useState(0);
   return (
     <>
       <div>
-        <h1>Welcome</h1>
-        <div>
-          {isQuizLive != true ? (
-            <Introduction setIsQuizLive={setIsQuizLive} />
-          ) : (
-            <Questionnaire />
-          )}
-        </div>
+        <h1>{quiz.quizTitle}</h1>
+        <Introduction description={quiz.quizDescription} />
+        <Questionnaire
+          activeQuestion={activeQuestion}
+          questions={quiz.questions}
+        />
       </div>
     </>
   );
 }
-
-export default App;

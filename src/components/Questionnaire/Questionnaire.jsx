@@ -1,40 +1,18 @@
-export default function Questionnaire() {
+import { useState } from "react";
+export default function Questionnaire({ activeQuestion, questions }) {
   return (
     <>
+      <h2>{questions[activeQuestion].question}</h2>
       <form>
-        <input
-          type="radio"
-          id="answer-1"
-          name="fav_language"
-          value="answer-1"
-        />
-        <label for="answer-1">Answer 1</label>
-        <br></br>
-        <input
-          type="radio"
-          id="answer-1"
-          name="fav_language"
-          value="answer-2"
-        />
-        <label for="answer-2">Answer 2</label>
-        <br></br>
-        <input
-          type="radio"
-          id="answer-3"
-          name="fav_language"
-          value="answer-3"
-        />
-        <label for="answer-3">Answer 3</label>
-        <br></br>
-        <input
-          type="radio"
-          id="answer-4"
-          name="fav_language"
-          value="answer-4"
-        />
-        <label for="answer-4">Answer 4</label>
-        <br></br>
-        <button>Submit</button>
+        {questions[activeQuestion].choices.map((choice) => {
+          return (
+            <>
+              <input type="radio" name="question" id={choice} value={choice} />
+              <label for={choice}>{choice}</label>
+            </>
+          );
+        })}
+        <button>Next</button>
       </form>
     </>
   );

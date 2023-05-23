@@ -1,11 +1,8 @@
-export default function Introduction({ setIsQuizLive }) {
-  function handleClick() {
-    setIsQuizLive(true);
-  }
+export default function Introduction({ description }) {
   return (
     <>
-      <article>This is the introduction</article>
-      <button onClick={handleClick}>Start the quiz!</button>
+      <article>{description}</article>
+      <button>Start the quiz!</button>
     </>
   );
 }
